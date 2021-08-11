@@ -12,13 +12,15 @@
             <h1>Character Manager</h1>
             <input type="Text">
         </header>
-        <section>
-            <div>
-                <img src="" alt="">
-                <h2 id="character-name">Nom</h2>
-                <p id="character-small-description">Paragraphe</p>
-                <button>See character</button>
-            </div>
+        <section id="target">
+            <template id="tpl-character">
+                <div>
+                    <img id="character-img" src="" alt="">
+                    <h2 id="character-name"></h2>
+                    <p id="character-small-description"></p>
+                    <button>See character</button>
+                </div>
+            </template>
         </section>
         <button>Add a new character to the collection</button>
     </main>
