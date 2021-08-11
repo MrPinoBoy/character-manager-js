@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Character Manager</title>
-    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/single.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet"> 
@@ -17,7 +17,6 @@
     <main>
         <header>
             <h1>Character Manager</h1>
-            <input type="Text" placeholder="Search character" class="search-bar">
         </header>
         <section id="target" class="character-card-container">
             <template id="tpl-character">
@@ -25,13 +24,14 @@
                     <img id="character-img" class="character-img" src="" alt="">
                     <h2 id="character-name" class="character-name"></h2>
                     <p id="character-small-description" class="character-small-description"></p>
-                    <button class="btn-character-view">See character</button>
+                    <p id="character-description" class="character-description"></p>
+                    <button class="btn-character-update">Update character</button>
+                    <button class="btn-character-delete">Delete character</button>
                 </div>
             </template>
         </section>
-        <button class="btn-character-add">Add a new character to the collection</button>
     </main>
-<script src="/script.js"></script>
+<script src="/single.js"></script>
     
 </body>
 </html>

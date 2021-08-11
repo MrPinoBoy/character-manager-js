@@ -15,6 +15,7 @@ header {
   align-items: center;
   border-bottom: 2px solid white;
   padding: 1rem 0;
+  margin-bottom: 40px;/**/
 }
 
 h1 {
@@ -35,3 +36,72 @@ h1 {
   padding: 0 1rem;
   height: 2.5rem;
 }
+
+.character-card-container {
+  display: flex;
+}
+
+.character-card{
+  display: flex;
+  flex-flow: column;
+  justify-content:space-between;
+  padding: 1rem;
+  margin: auto; 
+  align-items: flex-start;
+  background-color: #363333;
+  border-radius: 15px;
+  width: 270px;/**/
+  height: 350px;/*min-height :300px*/
+  box-shadow : 15px 13px 26px -1px rgba(90,84,84,0.92) ;
+}
+
+
+.character-img {
+  width: 100px;
+  height: 100px;
+  margin-top: 12px  ; /**/
+  margin-bottom: 12px;/**/
+  align-self: center;
+  border-radius: 50%;
+}
+
+.character-name {
+  font-family: "Permanent Marker", cursive;
+  font-size: /*1rem*/1.5rem;
+  color: white;
+  margin-bottom: 18px;/**/
+  font-weight: bold;
+}
+
+.character-small-description {
+  margin-bottom: 12px;/**/
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+}
+
+.btn-character-view {
+  display: flex;
+  justify-self: right;
+  padding: 5px; /**/
+  border-radius: 10px;
+  font-family: "Roboto", sans-serif;
+  color: white;
+  background-color: #363333;
+  border: 1px solid white;
+  margin-top: auto;/**/
+
+}
+
+.btn-character-add { /**/
+  display: block;
+  margin: 40px auto;
+  padding: 15px;
+  font-family: "Roboto", sans-serif;
+  border-radius: 10px;
+  background-color:  #4B7CFB;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+}
+
