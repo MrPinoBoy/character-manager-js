@@ -14,12 +14,12 @@
         const documentName = clone.getElementById("character-name")
         const documentShortDescription = clone.getElementById("character-small-description")
         const documentImage = clone.getElementById("character-img")
-        const documentForm = clone.getElementById("formGet")
+        const documentForm = clone.getElementById("formGet") //
 
         documentName.innerHTML = character.name
         documentShortDescription.innerHTML = character.shortDescription
         documentImage.setAttribute("src", `data:image/jpeg;base64,${character.image}`) //on définit l'attribut "src" de l'image en ajoutant "data:image/jpeg;base64," (qui permet d'afficher l'url fourni dans l'objet) suivi de l'url fourni dans l'objet (data[0].image)
-        documentForm.setAttribute("action", `single.html#${character.id}`)
+        documentForm.setAttribute("action", `pages/single.html#${character.id}`) //l'url du lien contient l'id du personnage arpès un #, pour qu'on puisse aller le rechercer sur la page single
         target.appendChild(clone)
     });
     // documentName.innerHTML = data[0].name
