@@ -6,6 +6,8 @@
         const smallDescription = document.getElementById("character-small-description")
         const longueDescription = document.getElementById("character-long-description")
         const currentId = window.location.hash.split('#')// on va chercher une information dans l'url, à partir du #, et split sert à se débarasser du #
+        const deleteButton = document.getElementById("button-character-delete")
+
         const fetcher = async() => { //on crée une fonction async (pour pouvoir utiliser await)
             let rawData = await fetch(`https://character-database.becode.xyz/characters/${currentId[1]}`)// on va chercher les informations qui correspondent au bon id. On précise [1] parce que split crée une array de deux éléments, un avec ce qu'il y a avant le # et un avec ce qu'il y a après 
             return character = await rawData.json() //on convertit les données en un objet json et encore une fois on utilise await car la conversion prend plus de temps
@@ -18,5 +20,20 @@
         smallDescription.innerHTML = character.shortDescription
         longueDescription.innerHTML = character.description
         console.log(character);
+
+        deleteButton.addEventListener("click",async () =>{
+            if (confirm('Really'))
+            {
+                let deleteCharacter = await fetch(`https://character-database.becode.xyz/characters/${currentId[1]}`, {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                })
+                document.getElementById("backToIndex").setAttribute("action","/index.html")
+            }else {
+                
+            }
+        })
         
 })();

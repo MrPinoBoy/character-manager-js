@@ -8,6 +8,10 @@
     const saveNewCharacter = document.getElementById("button-save")
     const cancelNewCharacter = document.getElementById("button-cancel")
     const newCharacter = new Object
+    
+    
+        
+    
 
     allInputs.forEach(element => element.value = "")//on vide tous les inputs
     async function readImage(file) {
@@ -38,6 +42,20 @@
             newCharacter.name = newName.value
             newCharacter.shortDescription = newSmallDescription.value
             newCharacter.description = newLongDescription.value
+
+            let id = null
+            let name = newCharacter.name
+            let shortDescription = newCharacter.shortDescription
+            let description = newCharacter.description
+            let image = newCharacter.image
+            
+            const postData = await fetch("https://character-database.becode.xyz/characters", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id, name, shortDescription, description, image})
+    })
 
         } else {
             alert("erreur")
