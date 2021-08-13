@@ -1,4 +1,5 @@
 (async() =>  {
+    const addButton = document.getElementById("btn-character-add")
     const template = document.getElementById("tpl-character")
     const target = document.getElementById("target")
     const fetcher = async() => { //on crée une fonction async (pour pouvoir utiliser await)
@@ -22,7 +23,7 @@
         documentForm.setAttribute("action", `pages/single.html#${character.id}`) //l'url du lien contient l'id du personnage arpès un #, pour qu'on puisse aller le rechercer sur la page single
         target.appendChild(clone)
     });
-    // documentName.innerHTML = data[0].name
-    // documentShortDescription.innerHTML = data[0].shortDescription
-    // documentImage.setAttribute("src", `data:image/jpeg;base64,${data[0].image}`) //on définit l'attribut "src" de l'image en ajoutant "data:image/jpeg;base64," (qui permet d'afficher l'url fourni dans l'objet) suivi de l'url fourni dans l'objet (data[0].image)
+    addButton.addEventListener("click", function(){
+        document.location.href = "/pages/create.html"
+    })
 })();

@@ -50,18 +50,19 @@
             let image = newCharacter.image
             
             const postData = await fetch("https://character-database.becode.xyz/characters", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ id, name, shortDescription, description, image})
-    })
-
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ id, name, shortDescription, description, image})
+            })
+            document.location.href = "/index.html"
         } else {
             alert("erreur")
         }
     })
 
     cancelNewCharacter.addEventListener("click", function(){
+        document.location.href = "/index.html"
     })
 })();
