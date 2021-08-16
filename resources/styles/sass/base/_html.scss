@@ -5,7 +5,7 @@
 }
 
 html {
-    font-size: 62,5%;
+    font-size: 100%;
 }
 
 body {
@@ -27,4 +27,8 @@ h1, h2, p {
 
 p, button {
     font-family: $paragraph-font;
+}
+
+textarea {
+    resize: none;
 }

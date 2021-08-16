@@ -7,6 +7,11 @@
     const updatedLongDescription = document.getElementById("update-character-long-description")
     const saveUpdatedCharacter = document.getElementById("button-save")
     const deleteCurrentCharacter = document.getElementById("button-delete")
+    const imageUploader = document.getElementById("image-input-container")
+    const imageUploaderText = document.getElementById("image-input-container-text")
+    const maxCharacterNameDisplay = document.getElementById("max-character-name")
+    const maxCharacterSmallDescriptionDisplay = document.getElementById("max-character-small-description")
+    const maxCharacterLongDescriptionDisplay = document.getElementById("max-character-long-description")
     const updatedCharacter = new Object
     const currentId = window.location.hash.split('#')
     
@@ -28,6 +33,13 @@
       console.log('File is not an image.', file.type, file);
       return;
     }
+
+    updatedName.addEventListener('input', autoResize, false);
+      
+        function autoResize() {
+            this.style.height = 'auto';
+            this.style.height = this.scrollHeight + 'px';
+        }
   
     const reader = new FileReader();//lis le contenu d'un fichier
     reader.addEventListener('load',() => {//l'event se lance après la ligne 16
@@ -40,9 +52,35 @@
     reader.readAsDataURL(file)
   }
 
+    imageUploader.addEventListener("click", ()=> {
+        document.getElementById("character-image-update").click()
+    })
+
+    imageUploaderText.addEventListener("click", ()=> {
+        document.getElementById("character-image-update").click()
+    })
+
     updatedImage.addEventListener("change", async function(event){
         let file = event.target.files//on va chercher le fichier qu'on a input qui est enregistré comme une array
         await readImage(file[0])//on utilise le fichier dans la fonction
+    })
+
+    maxCharacterNameDisplay.innerHTML = `${updatedName.value.length} on max ${updatedName.maxLength} char.` 
+
+    updatedName.addEventListener("input", ()=>{
+        maxCharacterNameDisplay.innerHTML = `${updatedName.value.length} on max ${updatedName.maxLength} char.` 
+    })   
+
+    maxCharacterSmallDescriptionDisplay.innerHTML = `${updatedSmallDescription.value.length} on max ${updatedSmallDescription.maxLength} char.` 
+
+    updatedSmallDescription.addEventListener("input", ()=>{
+        maxCharacterSmallDescriptionDisplay.innerHTML = `${updatedSmallDescription.value.length} on max ${updatedSmallDescription.maxLength} char.` 
+    })   
+
+    maxCharacterLongDescriptionDisplay.innerHTML = `${updatedLongDescription.value.length} on max ${updatedLongDescription.maxLength} char.` 
+
+    updatedLongDescription.addEventListener("input", ()=>{
+        maxCharacterLongDescriptionDisplay.innerHTML = `${updatedLongDescription.value.length} on max ${updatedLongDescription.maxLength} char.` 
     })
 
     saveUpdatedCharacter.addEventListener("click", async()=> {

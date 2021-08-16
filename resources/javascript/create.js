@@ -2,11 +2,17 @@
     const allInputs = document.querySelectorAll("input")
     const newImage = document.getElementById("character-image-upload")
     const preview = document.getElementById("character-image-preview")
+    const previewText = document.getElementById("preview-text")
     const newName = document.getElementById("input-character-name")
     const newSmallDescription = document.getElementById("input-character-small-description")
     const newLongDescription = document.getElementById("input-character-long-description")
     const saveNewCharacter = document.getElementById("button-save")
-    const cancelNewCharacter = document.getElementById("button-cancel")
+    const cancelNewCharacter = document.getElementById("button-delete")
+    const maxCharacterNameDisplay = document.getElementById("max-character-name")
+    const maxCharacterSmallDescriptionDisplay = document.getElementById("max-character-small-description")
+    const maxCharacterLongDescriptionDisplay = document.getElementById("max-character-long-description")
+    const imageUploader = document.getElementById("image-input-container")
+    const imageUploaderText = document.getElementById("image-input-container-text")
     const newCharacter = new Object
     
     
@@ -25,6 +31,7 @@
     reader.addEventListener('load', (event) => {//l'event se lance après la ligne 16
         const imageDataUrl = reader.result//result donne le résultat de la ligne 16
         preview.src = imageDataUrl;//on remplace la source par l'url
+        previewText.style.opacity = 0
         const imageUrlSeparator = imageDataUrl.split(",")
         newCharacter.image = imageUrlSeparator[1]
     });
@@ -32,9 +39,35 @@
     reader.readAsDataURL(file)
   }
 
+    imageUploader.addEventListener("click", ()=> {
+        document.getElementById("character-image-upload").click()
+    })
+
+    imageUploaderText.addEventListener("click", ()=> {
+        document.getElementById("character-image-upload").click()
+    })
+
     newImage.addEventListener("change", async function(event){
         let file = event.target.files//on va chercher le fichier qu'on a input qui est enregistré comme une array
         await readImage(file[0])//on utilise le fichier dans la fonction
+    })
+
+    maxCharacterNameDisplay.innerHTML = `${newName.value.length} on max ${newName.maxLength} char.` 
+
+    newName.addEventListener("input", ()=>{
+        maxCharacterNameDisplay.innerHTML = `${newName.value.length} on max ${newName.maxLength} char.` 
+    })   
+
+    maxCharacterSmallDescriptionDisplay.innerHTML = `${newSmallDescription.value.length} on max ${newSmallDescription.maxLength} char.` 
+
+    newSmallDescription.addEventListener("input", ()=>{
+        maxCharacterSmallDescriptionDisplay.innerHTML = `${newSmallDescription.value.length} on max ${newSmallDescription.maxLength} char.` 
+    })   
+
+    maxCharacterLongDescriptionDisplay.innerHTML = `${newLongDescription.value.length} on max ${newLongDescription.maxLength} char.` 
+
+    newLongDescription.addEventListener("input", ()=>{
+        maxCharacterLongDescriptionDisplay.innerHTML = `${newLongDescription.value.length} on max ${newLongDescription.maxLength} char.` 
     })
 
     saveNewCharacter.addEventListener("click", async()=> {

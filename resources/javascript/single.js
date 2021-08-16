@@ -20,7 +20,6 @@
         name.innerHTML = character.name
         smallDescription.innerHTML = character.shortDescription
         longueDescription.innerHTML = character.description
-        console.log(character);
 
         deleteButton.addEventListener("click",async () =>{
             if (confirm('Really'))
