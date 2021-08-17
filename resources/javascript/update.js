@@ -104,13 +104,13 @@
                 },
                 body: JSON.stringify({name, shortDescription, description, image})
             })
-            document.location.href = "/index.html"
+            document.location.href = "../index.html"
         } else {
             alert("erreur")
         }
     })
 
     deleteCurrentCharacter.addEventListener("click", function(){
-        document.location.href = "/index.html"
+        document.location.href = "../index.html"
     })
 })();
