@@ -17,9 +17,10 @@
     <main>
         <header>
             <h1>Character Manager</h1>
-            <input type="Text" placeholder="Search character" class="search-bar">
+            <input type="Text" placeholder="Search character" class="search-bar" id="search-bar">
         </header>
         <section id="target" class="character-mini-card-container">
+            <div id="loading" class="loading"></div>
             <template id="tpl-character">
                 <div class="character-card">
                     <div class="character-info">

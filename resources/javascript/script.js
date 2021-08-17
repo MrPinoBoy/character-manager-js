@@ -1,5 +1,8 @@
 (async() =>  {
+    const loading = document.getElementById("loading")
     const addButton = document.getElementById("btn-character-add")
+    const searchBar = document.getElementById("search-bar")
+    const cards = document.getElementsByClassName("character-card")
     const template = document.getElementById("tpl-character")
     const target = document.getElementById("target")
     const fetcher = async() => { //on crée une fonction async (pour pouvoir utiliser await)
@@ -7,15 +10,14 @@
         return data = await rawData.json() //on convertit les données en un objet json et encore une fois on utilise await car la conversion prend plus de temps
     }
 
-    //console.log(await fetcher()) //afin de ne pas afficher les données pendant qu'elles sont manipulées, on ajoute un await (tu peux enlever l'await si tu veux voir ce qu'il se passe)
-
+    
     await fetcher()
-    data.forEach(character => {
+    await data.forEach(character => {
         const clone = template.content.cloneNode(true)
         const documentName = clone.getElementById("character-name")
         const documentShortDescription = clone.getElementById("character-small-description")
         const documentImage = clone.getElementById("character-img")
-        const documentForm = clone.getElementById("formGet") //
+        const documentForm = clone.getElementById("formGet")
 
         documentName.innerHTML = character.name
         documentShortDescription.innerHTML = character.shortDescription
@@ -23,7 +25,25 @@
         documentForm.setAttribute("action", `pages/single.html#${character.id}`) //l'url du lien contient l'id du personnage arpès un #, pour qu'on puisse aller le rechercer sur la page single
         target.appendChild(clone)
     });
+    if (document. readyState === 'complete')  {
+        loading.style.display = "none"
+    }
+    console.log(cards)
     addButton.addEventListener("click", function(){
         document.location.href = "/pages/create.html"
     })
+    console.log(cards[1].children[1].getAttribute("action"))
+    searchBar.addEventListener("input", ()=>{
+            for (let card of cards) {
+                let cardIdLong = card.children[1].getAttribute("action").split("#")
+                let cardId = cardIdLong[1]
+                if (!card.children[0].children[1].innerHTML.toLowerCase().includes(searchBar.value.toLowerCase()) && !cardId.toLowerCase().includes(searchBar.value.toLowerCase())){
+                    card.style.display = "none"
+                } else {
+                    card.style.display = "flex"
+                }
+            }
+
+         })
+    
 })();

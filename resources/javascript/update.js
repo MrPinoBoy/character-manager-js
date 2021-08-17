@@ -14,7 +14,7 @@
     const maxCharacterLongDescriptionDisplay = document.getElementById("max-character-long-description")
     const updatedCharacter = new Object
     const currentId = window.location.hash.split('#')
-    
+    const textAreas = document.querySelectorAll("textarea")
         
     
     const fetcher = async() => {
@@ -27,20 +27,22 @@
     updatedLongDescription.value = currentCharacter.description
     preview.src = `data:image/jpeg;base64,${currentCharacter.image}`
     updatedCharacter.image = currentCharacter.image
+
+    textAreas.forEach(textArea => { 
+        textArea.addEventListener('input', autoResize, false);
+    });
+    
+    function autoResize() {
+        this.style.height = 'auto';
+        this.style.height = this.scrollHeight + 'px';
+    }
+    
     async function readImage(file) {
     // Check if the file is an image.
     if (file.type && !file.type.startsWith('image/')) {
       console.log('File is not an image.', file.type, file);
       return;
     }
-
-    updatedName.addEventListener('input', autoResize, false);
-      
-        function autoResize() {
-            this.style.height = 'auto';
-            this.style.height = this.scrollHeight + 'px';
-        }
-  
     const reader = new FileReader();//lis le contenu d'un fichier
     reader.addEventListener('load',() => {//l'event se lance après la ligne 16
         const imageDataUrl = reader.result//result donne le résultat de la ligne 16

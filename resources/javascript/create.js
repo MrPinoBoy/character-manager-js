@@ -6,6 +6,7 @@
     const newName = document.getElementById("input-character-name")
     const newSmallDescription = document.getElementById("input-character-small-description")
     const newLongDescription = document.getElementById("input-character-long-description")
+    
     const saveNewCharacter = document.getElementById("button-save")
     const cancelNewCharacter = document.getElementById("button-delete")
     const maxCharacterNameDisplay = document.getElementById("max-character-name")
@@ -15,10 +16,6 @@
     const imageUploaderText = document.getElementById("image-input-container-text")
     const newCharacter = new Object
     
-    
-        
-    
-
     allInputs.forEach(element => element.value = "")//on vide tous les inputs
     async function readImage(file) {
     // Check if the file is an image.
@@ -64,10 +61,10 @@
         maxCharacterSmallDescriptionDisplay.innerHTML = `${newSmallDescription.value.length} on max ${newSmallDescription.maxLength} char.` 
     })   
 
-    maxCharacterLongDescriptionDisplay.innerHTML = `${newLongDescription.value.length} on max ${newLongDescription.maxLength} char.` 
+    maxCharacterLongDescriptionDisplay.innerHTML = `0 on max 350 char.` 
 
     newLongDescription.addEventListener("input", ()=>{
-        maxCharacterLongDescriptionDisplay.innerHTML = `${newLongDescription.value.length} on max ${newLongDescription.maxLength} char.` 
+        maxCharacterLongDescriptionDisplay.innerHTML = `${newLongDescription.children[0].textContent.length} on max 350 char.` 
     })
 
     saveNewCharacter.addEventListener("click", async()=> {

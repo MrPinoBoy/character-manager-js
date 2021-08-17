@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/resources/styles/css/style.css">
+    <link href="https://cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
     <title>New Character</title>
 </head>
 <body>
@@ -38,6 +39,13 @@
         </div>
     </section>
     </main>
-    <script src="/resources/javascript/update.js"></script>
+    <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
+    <script src="/resources/javascript/create.js"></script>
+      <script>
+        var editor = new Quill('#update-character-long-description', {
+          theme: 'snow'
+        });
+        editor.root.dataset.placeholder = "Enter a long description here"
+      </script>
 </body>
 </html>
