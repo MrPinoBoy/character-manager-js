@@ -36,6 +36,6 @@
             }
         })
         updateButton.addEventListener("click", ()=>{
-            document.location.href = `/pages/update.html#${currentId[1]}`
+            document.location.href = `pages/update.html#${currentId[1]}`
         })
 })();
