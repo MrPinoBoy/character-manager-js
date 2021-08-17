@@ -4,8 +4,7 @@
     const preview = document.getElementById("character-image-preview")
     const updatedName = document.getElementById("update-character-name")
     const updatedSmallDescription = document.getElementById("update-character-small-description")
-    const updatedLongDescriptionParent = document.getElementById("update-character-long-description")
-    const updatedLongDescription = updatedLongDescriptionParent.child[0]
+    const updatedLongDescription = document.getElementById("update-character-long-description")
     const saveUpdatedCharacter = document.getElementById("button-save")
     const deleteCurrentCharacter = document.getElementById("button-delete")
     const imageUploader = document.getElementById("image-input-container")
@@ -23,9 +22,10 @@
         return currentCharacter = await rawData.json()
     }
     await fetcher()
+
     updatedName.value = currentCharacter.name
     updatedSmallDescription.value = currentCharacter.shortDescription
-    updatedLongDescription.value = currentCharacter.description
+    updatedLongDescription.children[0].textContent = currentCharacter.description
     preview.src = `data:image/jpeg;base64,${currentCharacter.image}`
     updatedCharacter.image = currentCharacter.image
 
@@ -80,17 +80,17 @@
         maxCharacterSmallDescriptionDisplay.innerHTML = `${updatedSmallDescription.value.length} on max ${updatedSmallDescription.maxLength} char.` 
     })   
 
-    maxCharacterLongDescriptionDisplay.innerHTML = `${updatedLongDescription.value.length} on max ${updatedLongDescription.maxLength} char.` 
+    maxCharacterLongDescriptionDisplay.innerHTML = `${updatedLongDescription.children[0].textContent} on max ${updatedLongDescription.maxLength} char.` 
 
     updatedLongDescription.addEventListener("input", ()=>{
-        maxCharacterLongDescriptionDisplay.innerHTML = `${updatedLongDescription.value.length} on max ${updatedLongDescription.maxLength} char.` 
+        maxCharacterLongDescriptionDisplay.innerHTML = `${updatedLongDescription.children[0].textContent} on max ${updatedLongDescription.maxLength} char.` 
     })
 
     saveUpdatedCharacter.addEventListener("click", async()=> {
         if (updatedName.value != "" && updatedSmallDescription.value != "" && updatedLongDescription.value != ""){
             updatedCharacter.name = updatedName.value
             updatedCharacter.shortDescription = updatedSmallDescription.value
-            updatedCharacter.description = updatedLongDescription.value
+            updatedCharacter.description = updatedLongDescription.children[0].textContent
 
             let name = updatedCharacter.name
             let shortDescription = updatedCharacter.shortDescription

@@ -71,7 +71,7 @@
         if (newName.value != "" && newSmallDescription.value != "" && newLongDescription.value != "" && newImage.value != ""){
             newCharacter.name = newName.value
             newCharacter.shortDescription = newSmallDescription.value
-            newCharacter.description = newLongDescription.value
+            newCharacter.description = newLongDescription.children[0].textContent
 
             let id = null
             let name = newCharacter.name
