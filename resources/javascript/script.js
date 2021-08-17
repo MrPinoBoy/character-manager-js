@@ -30,7 +30,7 @@
     }
     console.log(cards)
     addButton.addEventListener("click", function(){
-        document.location.href = "/pages/create.html"
+        document.location.href = "pages/create.html"
     })
     console.log(cards[1].children[1].getAttribute("action"))
     searchBar.addEventListener("input", ()=>{
