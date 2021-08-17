@@ -4,7 +4,8 @@
     const preview = document.getElementById("character-image-preview")
     const updatedName = document.getElementById("update-character-name")
     const updatedSmallDescription = document.getElementById("update-character-small-description")
-    const updatedLongDescription = document.getElementById("update-character-long-description")
+    const updatedLongDescriptionParent = document.getElementById("update-character-long-description")
+    const updatedLongDescription = updatedLongDescriptionParent.child[0]
     const saveUpdatedCharacter = document.getElementById("button-save")
     const deleteCurrentCharacter = document.getElementById("button-delete")
     const imageUploader = document.getElementById("image-input-container")
