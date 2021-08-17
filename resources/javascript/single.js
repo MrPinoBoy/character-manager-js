@@ -30,12 +30,12 @@
                         "Content-Type": "application/json"
                     },
                 })
-                document.location.href = "/index.html"
+                document.location.href = "../index.html"
             }else {
                 
             }
         })
         updateButton.addEventListener("click", ()=>{
-            document.location.href = `pages/update.html#${currentId[1]}`
+            document.location.href = `update.html#${currentId[1]}`
         })
 })();
